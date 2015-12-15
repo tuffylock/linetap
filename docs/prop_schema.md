@@ -21,7 +21,7 @@ column name     | data type | details
 id              | integer   | not null, primary key
 user_id         | integer   | not null, foreign key (users), indexed
 source_id       | integer   | not null, foreign key (sources), indexed
-start_time      | datetime  | not null, indexed
+start_time      | datetime  | not null
 end_time        | datetime  | not null
 
 ## mistakes

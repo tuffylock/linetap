@@ -10,7 +10,7 @@ Users have control over the direction and focus of practice with options to uplo
 
 Features include:
 
-- [ ] User signup, login, and authentication
+- [ ] User registration, authenticationsign, and sign in/sign out
 - [ ] Browser input compared to source material as you type, with real-time feedback
 - [ ] Cursor input returns to beginning of word or word group when a mistake is made
 - [ ] Simple upload of source material
@@ -31,7 +31,7 @@ Features include:
 ### 1: User Authentication
 #### 1 day
 
-User signup and authentication (BCrypt). Send signed in users to a dashboard that will display the application's root view.
+User registration and authentication (BCrypt). Send signed in users to a dashboard that will display the application's root view.
 
 [Details][phase-one]
 
@@ -79,7 +79,7 @@ Compare timing and transitions for error reaction. Add flourishes and detailed s
 
 ### Stretch Goals
 
-- [ ] Github login, Google/Twitter/FB login
+- [ ] Github auth, Google/Twitter/FB auth
 - [ ] Results detail view
 - [ ] Toggle between starting at word, sentence, or line
 - [ ] Add options to repeat words multiple times upon typo
