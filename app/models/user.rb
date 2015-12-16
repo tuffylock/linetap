@@ -7,6 +7,10 @@ class User < ActiveRecord::Base
 
   after_initialize :set_session_token
 
+  scope :caseless_find, lambda {
+    |attr, value| where("lower(#{attr}) = ?", value.downcase).first
+  }
+
   def reset_session_token!
     self.session_token = new_token
     self.save!
