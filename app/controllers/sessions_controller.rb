@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :require_no_account!, except: :destroy
+
   def new
     @user = User.new
     render :new

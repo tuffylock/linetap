@@ -28,4 +28,8 @@ class ApplicationController < ActionController::Base
   def require_account!
     redirect_to new_session_url unless logged_in?
   end
+
+  def require_no_account!
+    redirect_to root_url if logged_in?
+  end
 end
