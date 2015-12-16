@@ -7,7 +7,8 @@ class SessionsController < ApplicationController
     user = User.find_by(username: params[:user][:username])
 
     if user && user.authenticate(params[:user][:password])
-      redirect_to root_url, notice: ["#{user.username} logged in"]
+      login!(user)
+      redirect_to root_url
     else
       flash.now[:alert] = ["Invalid username or password"]
       @user = User.new(username: params[:user][:username])

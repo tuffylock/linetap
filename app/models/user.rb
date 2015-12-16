@@ -7,9 +7,19 @@ class User < ActiveRecord::Base
 
   after_initialize :set_session_token
 
+  def reset_session_token!
+    self.session_token = new_token
+    self.save!
+    self.session_token
+  end
+
   private
 
   def set_session_token
-    self.session_token ||= SecureRandom.urlsafe_base64
+    self.session_token ||= new_token
+  end
+
+  def new_token
+    SecureRandom.urlsafe_base64
   end
 end

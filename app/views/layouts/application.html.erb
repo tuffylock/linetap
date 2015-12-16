@@ -10,9 +10,22 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <% flash.each do |name, msg| -%>
-    <%= content_tag :div, msg, class: name %>
-  <% end %>
+  <div temp="header">
+    <a href="https://github.com/tuffylock/linetap">linetap#github</a>
+
+    <% if current_user %>
+      <%= current_user.username %>
+    <% else %>
+      <%= link_to "register", new_user_url %>
+      <%= link_to "log in", new_session_url %>
+    <% end %>
+  </div>
+
+  <div temp="errors">
+    <% flash.each do |name, msg| -%>
+      <%= content_tag :div, msg, class: name %>
+    <% end %>
+  </div>
 
 <%= yield %>
 
