@@ -78,8 +78,8 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-production:
-  <<: *default
-  database: linetap_production
-  username: linetap
-  password: <%= ENV['LINETAP_DATABASE_PASSWORD'] %>
+# production:
+#   <<: *default
+#   database: linetap_production
+#   username: linetap
+#   password: <%= ENV['LINETAP_DATABASE_PASSWORD'] %>

@@ -2,7 +2,8 @@ class User < ActiveRecord::Base
   has_secure_password
 
   validates :username, :password_digest, :session_token, presence: true
-  validates :username, :session_token, uniqueness: true # NOTE: case sensitivity?
+  validates :username, uniqueness: { case_sensitive: false, on: :create }
+  validates :session_token, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
   after_initialize :set_session_token

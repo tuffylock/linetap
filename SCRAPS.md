@@ -12,3 +12,5 @@ enable all tooltips in the document:
 
 tag comments with fixme/optimize/todo (rake notes)
 
+custom index on user in migration only, need schema persistence? look into "structure.sql" TODO
+

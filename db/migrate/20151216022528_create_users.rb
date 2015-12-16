@@ -7,8 +7,8 @@ class CreateUsers < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-
-    add_index :users, :username, unique: true
     add_index :users, :session_token, unique: true
+
+    execute "CREATE UNIQUE INDEX caseless_index_users_on_username ON users (LOWER(username));"
   end
 end
