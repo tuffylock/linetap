@@ -26,10 +26,12 @@ class ApplicationController < ActionController::Base
   end
 
   def require_account!
-    redirect_to new_session_url unless logged_in?
+    notice = ["You need to be logged in to access this page"]
+    redirect_to new_session_url, notice: notice unless logged_in?
   end
 
   def require_no_account!
-    redirect_to root_url if logged_in?
+    notice = ["You're already logged in"]
+    redirect_to root_url, notice: notice if logged_in?
   end
 end

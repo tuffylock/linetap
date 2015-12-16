@@ -1,0 +1,36 @@
+{
+  "name": "linetap",
+  "version": "1.0.0",
+  "description": "classical reconditioning",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "scripts": {
+    "postinstall": "./node_modules/.bin/webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tuffylock/linetap.git"
+  },
+  "keywords": [],
+  "author": "tuffylock",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tuffylock/linetap/issues"
+  },
+  "engines": {
+    "node": "4.1.1",
+    "npm": "2.1.x"
+  },
+  "homepage": "https://github.com/tuffylock/linetap#readme",
+  "dependencies": {
+    "babel-core": "^6.3.17",
+    "babel-loader": "^6.2.0",
+    "babel-preset-react": "^6.3.13",
+    "react": "^0.14.3",
+    "react-dom": "^0.14.3",
+    "webpack": "^1.12.9"
+  }
+}
