@@ -14,7 +14,7 @@ Users have control over the direction and focus of practice with options to uplo
 
 Features include:
 
-- [ ] User registration, authenticationsign, and sign in/sign out
+- [x] User registration, authenticationsign, and sign in/sign out
 - [ ] Browser input compared to source material as you type, with real-time feedback
 - [ ] Cursor input returns to beginning of word or word group when a mistake is made
 - [ ] Simple upload of source material

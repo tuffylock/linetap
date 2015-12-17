@@ -12,6 +12,7 @@
 <body>
   <div temp="header">
     <a href="https://github.com/tuffylock/linetap">linetap#github</a>
+    <a href="https://linetap.herokuapp.com/">linetap#heroku</a>
 
     <% if logged_in? %>
       <%= current_user.username %>
@@ -21,14 +22,17 @@
       <%= link_to "log in", new_session_url %>
     <% end %>
   </div>
-
+  <br>
   <div temp="errors">
-    <% flash.each do |name, msg| -%>
-      <%= content_tag :div, msg, class: name %>
+    <% if flash.is_a?(Array) %>
+      <% flash.each do |name, msg| -%>
+        <%= content_tag :div, msg, class: name %>
+      <% end %>
+      <br>
     <% end %>
   </div>
 
-<%= yield %>
+  <%= yield %>
 
 </body>
 </html>

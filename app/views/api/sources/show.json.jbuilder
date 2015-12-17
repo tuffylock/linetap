@@ -1,1 +1,1 @@
-json.extract! @source, :title, :body
+json.extract! @source, :id, :title, :body

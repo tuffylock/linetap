@@ -14,3 +14,9 @@ tag comments with fixme/optimize/todo (rake notes)
 
 custom index on user in migration only, need schema persistence? look into "structure.sql" TODO
 
+[delayed fading placeholder text](https://css-tricks.com/hang-on-placeholders/)
+[placeholder slides right](http://css-plus.com/2011/09/make-the-input-placeholder-user-friendly/)
+
+[validate input as it's entered](http://newforms.readthedocs.org/en/latest/react_client.html#interactive-form-validation)
+
+
