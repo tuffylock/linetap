@@ -13,7 +13,7 @@
   <div temp="header">
     <a href="https://github.com/tuffylock/linetap">linetap#github</a>
     <a href="https://linetap.herokuapp.com/">linetap#heroku</a>
-
+    &nbsp;
     <% if logged_in? %>
       <%= current_user.username %>
       <%= link_to "log out", session_url, method: :delete %>
@@ -21,6 +21,8 @@
       <%= link_to "register", new_user_url %>
       <%= link_to "log in", new_session_url %>
     <% end %>
+    &nbsp;
+    <%= link_to "home", root_url %>
   </div>
   <br>
   <div temp="errors">

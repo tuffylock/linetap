@@ -1,7 +1,7 @@
 # View Wireframes
 
 ## Component Hierarchy
-![component-hierarchy]
+![tentative][component-hierarchy]
 
 ## New User
 _modal_
@@ -30,3 +30,5 @@ _inset_
 [upload-form]: ./wireframes/upload_form.png
 [dashboard]: ./wireframes/dashboard.png
 [stats]: ./wireframes/stats.png
+
+http://celandine13.livejournal.com/33599.html

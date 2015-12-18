@@ -24,10 +24,10 @@ Features include:
 
 ## Design Docs
 
-* [View Wireframes][view]
+* [View Wireframes]
 * [DB Schema][schema]
 
-[view]: ./docs/views.md
+[View Wireframes]: ./docs/views.md
 [schema]: ./docs/schema.md
 
 ## Implementation Timeline
@@ -63,7 +63,7 @@ Add Sources JSON API and actions for CRUD functionality. Create form view allowi
 ### 5: Stat Calculation and Display
 #### 1 day
 
-Add user statistics JSON API and calculations resulting in meaningful displays for each user. Show WPM (or characters/minute), accuracy, and averages for each over time. Automatically begin and end timer when typing starts and finishes.
+Add user statistics JSON API and calculations resulting in meaningful displays for each user. Show WPM (5 characters. alt, calc characters/minute), accuracy, and averages for each over time. Automatically begin and end timer when typing starts and finishes.
 
 [Details][phase-five]
 
@@ -83,9 +83,11 @@ Compare timing and transitions for error reaction. Add flourishes and detailed s
 
 ### Stretch Goals
 
+- [ ] Sourcing source material (amazon, goodreads, gh, etc)
 - [ ] Github auth, Google/Twitter/FB auth
 - [ ] Results detail view
 - [ ] Toggle between starting at word, sentence, or line
+- [ ] Reset cursor when typing slows (not just on typos)
 - [ ] Add options to repeat words multiple times upon typo
 - [ ] Github repo sourcing
 - [ ] Add and enforce shortcuts/[autocompletions][typeahead]
@@ -103,3 +105,8 @@ Compare timing and transitions for error reaction. Add flourishes and detailed s
 [phase-seven]: ./docs/phases/phase7.md
 
 [typeahead]: https://github.com/twitter/typeahead.js
+
+
+### TODO
+* input not moving to next line until it's long enough (though source already is)
+* make cursor stop blinking during active input

@@ -10,7 +10,7 @@ var SourcesIndex = React.createClass({
     });
 
     return (
-      <div>{sources[0]}</div>
+      <div></div>
     );
   }
 });

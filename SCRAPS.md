@@ -1,3 +1,18 @@
+prototypist
+
+[wombat colors](http://files.werx.dk/wombat.vim)
+
+###inspo
+
+<https://typing.io> - code
+<http://type-fu.com> - screencaps
+<http://typing.lk/> - individual characters as spans with styles
+<http://www.keybr.com/#!game> - *
+<http://play.typeracer.com> - race against other users
+<http://www.gnu.org/software/gtypist/> - cl download
+<http://www.keyhero.com/custom-typing-test/#wpm-calculation> - elaborate stats
+
+
 tooltips (keyboard shortcuts)
 >bootstrap: to create a tooltip, add the data-toggle="tooltip" attribute to an element.
 Use the title attribute to specify the text that should be displayed inside the tooltip
@@ -19,4 +34,11 @@ custom index on user in migration only, need schema persistence? look into "stru
 
 [validate input as it's entered](http://newforms.readthedocs.org/en/latest/react_client.html#interactive-form-validation)
 
+[cursor in editable div](http://jsfiddle.net/timdown/vXnCM/)
 
+[upload icon cursor styling](http://jsfiddle.net/gKVKm/36/)
+[cleaner ^^](http://stackoverflow.com/questions/21842274/cross-browser-custom-styling-for-file-upload-button/21842275#21842275)
+
+[hotkeys and focus definition](http://chrispearce.co/exploring-hotkeys-and-focus-in-react/)
+
+<em>  Renders as emphasized text
