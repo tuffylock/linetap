@@ -29,6 +29,8 @@ tag comments with fixme/optimize/todo (rake notes)
 
 custom index on user in migration only, need schema persistence? look into "structure.sql" TODO
 
+400 AND 700 weight monospace gfont. need both ?
+
 [delayed fading placeholder text](https://css-tricks.com/hang-on-placeholders/)
 [placeholder slides right](http://css-plus.com/2011/09/make-the-input-placeholder-user-friendly/)
 
@@ -40,5 +42,7 @@ custom index on user in migration only, need schema persistence? look into "stru
 [cleaner ^^](http://stackoverflow.com/questions/21842274/cross-browser-custom-styling-for-file-upload-button/21842275#21842275)
 
 [hotkeys and focus definition](http://chrispearce.co/exploring-hotkeys-and-focus-in-react/)
+
+[accessibility](http://www.w3.org/WAI/intro/aria)
 
 <em>  Renders as emphasized text

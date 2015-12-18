@@ -15,8 +15,8 @@ Users have control over the direction and focus of practice with options to uplo
 Features include:
 
 - [x] User registration, authenticationsign, and sign in/sign out
-- [ ] Browser input compared to source material as you type, with real-time feedback
-- [ ] Cursor input returns to beginning of word or word group when a mistake is made
+- [x] Browser input compared to source material as you type, with real-time feedback
+- [x] Cursor input returns to beginning of word or word group when a mistake is made
 - [ ] Simple upload of source material
 - [ ] Account tracks stats and progress over time
 - [ ] Calculate and store WPM, accuracy, and error details

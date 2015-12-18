@@ -28,6 +28,7 @@
 .typing-input {
   position: relative;
   background: #ccdddd;
+  font-family: 'Fira Mono';
   padding-top: 50%;
   width: 50%;
   margin: 0, auto;
