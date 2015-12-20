@@ -46,3 +46,7 @@ custom index on user in migration only, need schema persistence? look into "stru
 [accessibility](http://www.w3.org/WAI/intro/aria)
 
 <em>  Renders as emphasized text
+
+wat: ReactDOM.unmountComponentAtNode(domnode)
+
+mobile autocorrect/cap `<input type="text" autocorrect="off" />` and `<input type="search" autocapitalize="none" />`

@@ -7,5 +7,3 @@ document.addEventListener('DOMContentLoaded', function () {
   root = document.getElementById('root');
   ReactDOM.render(<LineTap />, root);
 });
-
-window.ApiUtil = require('./util/ApiUtil');
