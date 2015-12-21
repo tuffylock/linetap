@@ -36,11 +36,14 @@ var Dashboard = React.createClass({
 
     return (
       <div id="dashboard">
-        <div className="source-pane">
+        <div className="nav-bar">
           <SourcesIndex sources={this.state.sources} />
         </div>
         <div className="input-pane">
           <TypingInput source={body} />
+        </div>
+        <div className="info-bar">
+          <p>LineTap establishes and corrects accurate typing patterns by treating words, sentences, or lines as full units. Typos take you to the beginning of a segment instead of allowing backspace or only accounting for mistakes during accuracy calculations; bad habits are remedied, not just treated.</p>
         </div>
       </div>
     );

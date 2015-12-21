@@ -7,10 +7,7 @@ var LineTap = React.createClass({
 
     return (
       <div id="linetap">
-        <div className="dashboard">
-                                <h3>try typing.</h3>
-          <Dashboard />
-        </div>
+        <Dashboard />
       </div>
     );
   }

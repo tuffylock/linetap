@@ -60,10 +60,10 @@ var TypingInput = React.createClass({
       return <li className="error" key={error.id}>index: {error.index}, source: {error.sourceChar}, input: {error.inputChar}</li>
     });
 
-    var currentStyle = {background: '#ccdddd'};
+    var currentStyle = {background: '#2e454e'};
 
     if (this.state.mistyped === true) {
-      currentStyle = {background: '#ECAAA8'};
+      currentStyle = {background: '#a80000'};
     }
 
     var inputCursor = this.state.focused? <span className="input-caret">&nbsp;</span> : <span></span>;

@@ -6,15 +6,16 @@
   <%= render 'favicon' %>
 
   <link href='https://fonts.googleapis.com/css?family=Fira+Mono:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
 
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div temp="header">
-    <a href="https://github.com/tuffylock/linetap">linetap#github</a>
-    <a href="https://linetap.herokuapp.com/">linetap#heroku</a>
+<!--   <div temp="header">
     &nbsp;
     <% if logged_in? %>
       <%= current_user.username %>
@@ -34,7 +35,7 @@
       <% end %>
       <br>
     <% end %>
-  </div>
+  </div> -->
 
   <%= yield %>
 
