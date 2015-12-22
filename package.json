@@ -1,30 +1,26 @@
 {
-  "name": "linetap",
+  "name": "proto-typist",
   "version": "1.0.0",
   "description": "classical reconditioning",
-  "main": "index.js",
-  "directories": {
-    "doc": "docs",
-    "test": "test"
-  },
+  "main": "proto-typist.jsx",
   "scripts": {
     "postinstall": "./node_modules/.bin/webpack"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tuffylock/linetap.git"
+    "url": "git+https://github.com/tuffylock/proto-typist.git"
   },
   "keywords": [],
   "author": "tuffylock",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tuffylock/linetap/issues"
+    "url": "https://github.com/tuffylock/proto-typist/issues"
   },
   "engines": {
     "node": "4.1.1",
     "npm": "2.1.x"
   },
-  "homepage": "https://github.com/tuffylock/linetap#readme",
+  "homepage": "https://github.com/tuffylock/proto-typist#readme",
   "dependencies": {
     "babel-core": "^6.3.17",
     "babel-loader": "^6.2.0",

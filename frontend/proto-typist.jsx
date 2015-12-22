@@ -1,9 +1,9 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-var LineTap = require('./components/LineTap');
+var App = require('./components/App');
 
 document.addEventListener('DOMContentLoaded', function () {
   root = document.getElementById('root');
-  ReactDOM.render(<LineTap />, root);
+  ReactDOM.render(<App />, root);
 });

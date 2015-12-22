@@ -3,11 +3,11 @@ var React = require('react');
 var Dashboard = require('./Dashboard/Dashboard');
 var NavBarContainer = require('./NavBar/NavBarContainer');
 
-var LineTap = React.createClass({
+var App = React.createClass({
   render: function () {
 
     return (
-      <div id="linetap">
+      <div>
         <NavBarContainer />
         <Dashboard />
       </div>
@@ -15,4 +15,4 @@ var LineTap = React.createClass({
   }
 });
 
-module.exports = LineTap;
+module.exports = App;

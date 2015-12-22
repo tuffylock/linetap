@@ -16,7 +16,7 @@
             "picture_aspect": "no_change",
             "theme_color": "#f5f5f5",
             "manifest": {
-                "name": "LineTap",
+                "name": "proto-typist",
                 "display": "browser",
                 "orientation": "not_set",
                 "on_conflict": "override"
