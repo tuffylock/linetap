@@ -1,4 +1,5 @@
 var React = require('react');
+var InputCursor = require('./InputCursor');
 
 var TypingInput = React.createClass({
   getInitialState: function () {
@@ -7,7 +8,7 @@ var TypingInput = React.createClass({
 
   addError: function (index, sourceChar, inputChar) {
     var errors = this.state.errors.slice();
-    var id = Object.keys(errors).length;
+    var id = errors.length;
 
     var error = {
       id: id,
@@ -66,10 +67,8 @@ var TypingInput = React.createClass({
       currentStyle = {background: '#a80000'};
     }
 
-    var inputCursor = this.state.focused? <span className="input-caret">&nbsp;</span> : <span></span>;
-
     return (
-            <div>
+<div>
       <div className="typing-input">
         <input autoFocus
           ref="textInput"
@@ -79,15 +78,17 @@ var TypingInput = React.createClass({
           onFocus={this.focus}
           onBlur={this.blur}
         />
-        <div className="input-body" onClick={this.handleFocus}>
-        {this.state.inputBody}
-        <span style={currentStyle}>{this.state.temp}</span>
-        {inputCursor}
-        </div>
+
         <div className="source-body">{this.props.source}</div>
+
+        <div className="input-body" onClick={this.handleFocus}>
+          {this.state.inputBody}
+          <span style={currentStyle}>{this.state.temp}</span>
+          <InputCursor focused={this.state.focused}/>
+        </div>
       </div>
-            {errors}
-            </div>
+{errors}
+</div>
     );
   }
 });

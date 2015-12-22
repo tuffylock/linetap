@@ -36,14 +36,14 @@ body {
   position: relative;
 }
 
-.nav-bar {
+.nav-pane {
   float: left;
   width: 17vw;
   height: 100vh;
   padding: 1em;
 }
 
-.info-bar {
+.info-pane {
   float: right;
   padding: 2em;
   width: 17vw;
@@ -113,14 +113,18 @@ body {
   left: -100%;
 }
 
-.input-caret {
+.input-cursor.unfocused {
+  background: transparent;
+}
+
+.input-cursor.focused {
   display: inline-block;
   width: 2px;
   background: $ghost-text-color;
-  animation: flash 1s infinite;
+  animation: cursor-flash 1s infinite;
 }
 
-@keyframes flash {
+@keyframes cursor-flash {
   0%, 50% {
     opacity: 1;
   }

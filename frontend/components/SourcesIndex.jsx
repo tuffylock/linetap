@@ -11,11 +11,7 @@ var SourcesIndex = React.createClass({
 
     return (
       <div>
-        <p><a href="https://github.com/tuffylock/linetap">linetap#github</a></p>
-        <p><a href="https://linetap.herokuapp.com/">linetap#heroku</a></p>
-        <p>login</p>
-        <p>stats</p>
-        <p>feedback</p>
+
       </div>
     );
   }

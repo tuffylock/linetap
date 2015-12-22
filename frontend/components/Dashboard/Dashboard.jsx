@@ -1,9 +1,8 @@
 var React = require('react');
 
-var ApiUtil = require('../util/ApiUtil');
-var SourceStore = require('../stores/SourceStore');
+var ApiUtil = require('../../util/ApiUtil');
+var SourceStore = require('../../stores/SourceStore');
 
-var SourcesIndex = require('./SourcesIndex');
 var TypingInput = require('./TypingInput');
 
 
@@ -36,13 +35,10 @@ var Dashboard = React.createClass({
 
     return (
       <div id="dashboard">
-        <div className="nav-bar">
-          <SourcesIndex sources={this.state.sources} />
-        </div>
         <div className="input-pane">
           <TypingInput source={body} />
         </div>
-        <div className="info-bar">
+        <div className="info-pane">
           <p>LineTap establishes and corrects accurate typing patterns by treating words, sentences, or lines as full units. Typos take you to the beginning of a segment instead of allowing backspace or only accounting for mistakes during accuracy calculations; bad habits are remedied, not just treated.</p>
         </div>
       </div>
