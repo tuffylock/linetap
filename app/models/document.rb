@@ -1,3 +1,3 @@
-class Source < ActiveRecord::Base
+class Document < ActiveRecord::Base
   validates :title, :body, presence: true
 end

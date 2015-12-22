@@ -38,7 +38,7 @@ body {
 
 .nav-pane {
   float: left;
-  width: 17vw;
+  width: 16vw;
   height: 100vh;
   padding: 1em;
   background: transparent;
@@ -52,8 +52,9 @@ body {
   float: right;
   padding: 2em;
   width: 16vw;
-  height: 99vh;
+  height: 100vh;
   background: transparent;
+  overflow: auto;
 }
 
 .input-pane:before {
@@ -62,9 +63,9 @@ body {
   content: "";
   margin: .5vh 0;
   height: 99vh;
-  width: 67vw;
+  width: 68vw;
   border-style: solid;
-  border-width: 5vh 4.5vw;
+  border-width: 4.5vh 4.5vw;
   border-top-color: #77726f;
   border-left-color: #6d6a69;
   border-right-color: #827d7a;
@@ -76,12 +77,12 @@ body {
   box-shadow: inset 0px 0px 10px 20px #293A3F;
   border-radius: 60% / 1%;
   float: left;
-  position: relative;
+  position: fixed;
   background: $input-pane-color;
   font-family: 'Fira Mono';
   width: 60vw;
   height: 92vh;
-  margin: 4vh 3.5vw;
+  margin: 4vh 20vw;
 }
 
 .typing-input:after {
@@ -97,12 +98,15 @@ body {
 }
 
 .typing-input div {
+  display: inline-block;
+  max-width: 40em;
   background: transparent;
   position: absolute;
   top: 1.5em;
   bottom: 1.5em;
   left: 1.5em;
   right: 1.5em;
+  margin: 0 auto;
 }
 
 .typing-input .source-body {

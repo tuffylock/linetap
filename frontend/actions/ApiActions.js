@@ -1,12 +1,12 @@
 var Dispatcher = require('../dispatcher/Dispatcher');
 
-var SourceConstants = require('../constants/SourceConstants');
+var DocumentConstants = require('../constants/DocumentConstants');
 
 var ApiActions = {
-  receiveAllSources: function (sources) {
+  receiveAllDocuments: function (documents) {
     Dispatcher.dispatch({
-      actionType: SourceConstants.SOURCES_RECEIVED,
-      sources: sources
+      actionType: DocumentConstants.DOCUMENTS_RECEIVED,
+      documents: documents
     });
   }
 };

@@ -1,11 +1,11 @@
 var ApiActions = require('../actions/ApiActions');
 
 var ApiUtil = {
-  fetchAllSources: function () {
+  fetchAllDocuments: function () {
     $.ajax({
-      url: 'api/sources',
-      success: function (sources) {
-        ApiActions.receiveAllSources(sources);
+      url: 'api/documents',
+      success: function (documents) {
+        ApiActions.receiveAllDocuments(documents);
       }
     });
   }

@@ -1,7 +1,7 @@
 var React = require('react');
 
 var ApiUtil = require('../../util/ApiUtil');
-var SourceStore = require('../../stores/SourceStore');
+var DocumentStore = require('../../stores/DocumentStore');
 
 var InfoPane = require('./InfoPane');
 var TypingInput = require('./TypingInput');
@@ -9,12 +9,12 @@ var TypingInput = require('./TypingInput');
 
 var Dashboard = React.createClass({
   getInitialState: function () {
-    return { sources: SourceStore.all() };
+    return { documents: DocumentStore.all() };
   },
 
   componentDidMount: function () {
-    this.onChangeListener = SourceStore.addListener(this._onChange);
-    ApiUtil.fetchAllSources();
+    this.onChangeListener = DocumentStore.addListener(this._onChange);
+    ApiUtil.fetchAllDocuments();
   },
 
   componentWillUnmount: function () {
@@ -22,14 +22,14 @@ var Dashboard = React.createClass({
   },
 
   _onChange: function () {
-    this.setState({ sources: SourceStore.all() });
+    this.setState({ documents: DocumentStore.all() });
   },
 
   render: function () {
     var body;
 
-    if (this.state.sources[0]) {
-      body = this.state.sources[0].body;
+    if (this.state.documents[0]) {
+      body = this.state.documents[0].body;
     } else {
       body = "";
     };

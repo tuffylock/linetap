@@ -1,6 +1,6 @@
 class CreateSources < ActiveRecord::Migration
   def change
-    create_table :sources do |t|
+    create_table :documents do |t|
       t.string :title, null: false
       t.text :body, null: false
 
