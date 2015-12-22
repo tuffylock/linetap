@@ -32,15 +32,15 @@ body {
   color: #373E44;
 }
 
-.dashboard {
-  position: relative;
-}
-
 .nav-pane {
   float: left;
   width: 17vw;
   height: 100vh;
   padding: 1em;
+}
+
+.dashboard {
+  position: relative;
 }
 
 .info-pane {

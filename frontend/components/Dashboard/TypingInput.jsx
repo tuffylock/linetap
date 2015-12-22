@@ -68,7 +68,7 @@ var TypingInput = React.createClass({
     }
 
     return (
-<div>
+<div className="input-pane">
       <div className="typing-input">
         <input autoFocus
           ref="textInput"
