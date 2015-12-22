@@ -1,11 +1,15 @@
 var React = require('react');
 
 var NavBar = require('./NavBar');
+var UploadForm = require('./UploadForm');
 
 var NavBarContainer = React.createClass ({
   render: function () {
     return (
-      <NavBar />
+      <div className="nav-pane">
+        <NavBar />
+        <UploadForm />
+      </div>
     );
   }
 });
