@@ -8,7 +8,7 @@ classical reconditioning
 
 ## MVP
 
-proto-typist establishes and corrects accurate typing patterns by treating words, sentences, or lines as full units. Typos take you to the beginning of a segment instead of allowing backspace or only accounting for mistakes during accuracy calculations; bad habits are remedied, not just treated.
+proto-typist establishes and corrects accurate typing patterns by treating words, sentences, or lines as full units. Typos take you to the beginning of a segment instead of allowing backspace or only accounting for mistakes during accuracy calculations; bad habits are remedied, not just acknowledged.
 
 Users have control over the direction and focus of practice with options to upload personal source materials. Individual statistics and mistakes are tracked over time with details and summaries for common mistypes.
 

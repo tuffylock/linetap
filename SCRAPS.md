@@ -45,6 +45,8 @@ custom index on user in migration only, need schema persistence? look into "stru
 
 [accessibility](http://www.w3.org/WAI/intro/aria)
 
+[enforce container focus (modals?)](https://github.com/vigetlabs/react-focus-trap)
+
 <em>  Renders as emphasized text
 
 wat: ReactDOM.unmountComponentAtNode(domnode)

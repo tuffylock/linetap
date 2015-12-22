@@ -6,6 +6,14 @@ var TypingInput = React.createClass({
     return { lastChar: "", inputBody: "", temp: "", mistyped: false, errors: [], focused: false };
   },
 
+  // TODO: autofocus ONLY when pasted into or confirmed. allow edits.
+
+  // componentDidUpdate: function (prevProps) {
+  //   if (this.props.sourceText !== prevProps.sourceText) {
+  //     this.handleFocus();
+  //   }
+  // },
+
   addError: function (index, sourceChar, inputChar) {
     var errors = this.state.errors.slice();
     var id = errors.length;
@@ -21,14 +29,16 @@ var TypingInput = React.createClass({
     this.setState({ errors: errors });
   },
 
-  handleFocus: function (e) {
-    this.refs.textInput.focus();
+  handleFocus: function () {
+    if (this.props.sourceText && this.props.sourceText.length > 0) {
+      this.refs.textInput.focus();
+    }
   },
 
   handleInput: function (e) {
     var index = this.state.inputBody.length + this.state.temp.length;
 
-    var sourceChar = this.props.source[index];
+    var sourceChar = this.props.sourceText[index];
     var inputChar = e.currentTarget.value;
 
     var temp = this.state.temp + inputChar;
@@ -70,7 +80,7 @@ var TypingInput = React.createClass({
     return (
 <div className="input-pane">
       <div className="typing-input">
-        <input autoFocus
+        <input
           ref="textInput"
           type="text"
           value={this.state.lastChar}
@@ -79,7 +89,7 @@ var TypingInput = React.createClass({
           onBlur={this.blur}
         />
 
-        <div className="source-body">{this.props.source}</div>
+        <div className="source-body">{this.props.sourceText}</div>
 
         <div className="input-body" onClick={this.handleFocus}>
           {this.state.inputBody}

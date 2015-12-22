@@ -40,8 +40,15 @@ body {
   float: left;
   width: 16vw;
   height: 100vh;
-  padding: 1em;
+  padding: 1vh 1vw;
   background: transparent;
+}
+
+.doc-paste {
+  resize: none;
+  width: 14vw;
+  height: 6em;
+  background: #CAD0CE;
 }
 
 .dashboard {
