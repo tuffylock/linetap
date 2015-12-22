@@ -38,9 +38,11 @@ var Dashboard = React.createClass({
       body = "";
     };
 
+    var upload = this.state.reportBodyText;
+
     return (
       <div id="dashboard">
-        <TypingInput sourceText={this.state.reportBodyText} />
+        <TypingInput sourceText={upload} />
         <InfoPane />
       </div>
     );

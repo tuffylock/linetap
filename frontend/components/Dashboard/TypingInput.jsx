@@ -3,15 +3,23 @@ var InputCursor = require('./InputCursor');
 
 var TypingInput = React.createClass({
   getInitialState: function () {
-    return { lastChar: "", inputBody: "", temp: "", mistyped: false, errors: [], focused: false };
+    return { lastChar: '', inputBody: '', temp: '', mistyped: false, errors: [], focused: false };
   },
 
   // TODO: autofocus ONLY when pasted into or confirmed. allow edits.
 
   // componentDidUpdate: function (prevProps) {
-  //   if (this.props.sourceText !== prevProps.sourceText) {
-  //     this.handleFocus();
-  //   }
+  //   // if (this.props.sourceText !== prevProps.sourceText) {
+  //   //   this.handleFocus();
+  //   // }
+
+  //   this.setState({ inputBody: '' })
+  // },
+
+  // TODO: clear input text when fresh source arrives
+
+  // componentWillReceiveProps: function () {
+  //   this.setState({ inputBody: '' })
   // },
 
   addError: function (index, sourceChar, inputChar) {
@@ -43,6 +51,8 @@ var TypingInput = React.createClass({
 
     var temp = this.state.temp + inputChar;
 
+    var breakChars = new RegExp(/[\s\.\?!:;,"']/);
+
     if (inputChar !== sourceChar) {
       this.addError(index, sourceChar, inputChar);
       this.setState({ mistyped: true });
@@ -50,7 +60,7 @@ var TypingInput = React.createClass({
       setTimeout(function () {
         that.setState({ mistyped: false, temp: "" });
       }, 400);
-    } else if (inputChar === ' ' && !this.state.mistyped) {
+    } else if (breakChars.test(inputChar) && !this.state.mistyped) {
       var newBody = this.state.inputBody + temp;
       temp = "";
       this.setState({ inputBody: newBody })
@@ -80,14 +90,13 @@ var TypingInput = React.createClass({
     return (
 <div className="input-pane">
       <div className="typing-input">
-        <input
+        <textarea
           ref="textInput"
-          type="text"
           value={this.state.lastChar}
           onChange={this.handleInput}
           onFocus={this.focus}
           onBlur={this.blur}
-        />
+        ></textarea>
 
         <div className="source-body">{this.props.sourceText}</div>
 
