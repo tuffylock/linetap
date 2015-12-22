@@ -15,6 +15,7 @@ var UploadForm = React.createClass({
   render: function () {
     return (
       <form className="upload-form">
+        <h3 style={{color: 'darkred'}}>Upload practice material here: </h3>
         <textarea autoFocus
           className="doc-paste"
           placeholder="Paste text here..."
