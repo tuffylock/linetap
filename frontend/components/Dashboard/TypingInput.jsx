@@ -87,7 +87,7 @@ var TypingInput = React.createClass({
           <InputCursor focused={this.state.focused}/>
         </div>
       </div>
-{errors}
+<div className="errors">{errors}</div>
 </div>
     );
   }
