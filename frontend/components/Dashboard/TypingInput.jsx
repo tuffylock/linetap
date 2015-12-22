@@ -18,9 +18,11 @@ var TypingInput = React.createClass({
 
   // TODO: clear input text when fresh source arrives
 
-  // componentWillReceiveProps: function () {
-  //   this.setState({ inputBody: '' })
-  // },
+  componentWillReceiveProps: function (newProps) {
+    if (newProps.sourceText !== this.props.sourceText) {
+      this.setState({ inputBody: '', temp: '' });
+    }
+  },
 
   addError: function (index, sourceChar, inputChar) {
     var errors = this.state.errors.slice();
@@ -43,8 +45,17 @@ var TypingInput = React.createClass({
     }
   },
 
+  ___donetyping: function () {
+    alert("done! good job! keep practicing this one or upload some new content! ***this popup is a working acknowledgement of completion and will be replaced with something less obnoxious***");
+      this.setState({ inputBody: '', temp: '' });
+  },
+
   handleInput: function (e) {
     var index = this.state.inputBody.length + this.state.temp.length;
+
+    if (index === this.props.sourceText.length) {
+      this.___donetyping();
+    }
 
     var sourceChar = this.props.sourceText[index];
     var inputChar = e.currentTarget.value;
