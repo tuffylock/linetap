@@ -95,6 +95,7 @@ Compare timing and transitions for error reaction. Add flourishes and detailed s
 - [ ] Endless mode generator
 - [ ] Rhythm game. Melody when correct, dyssonant notes on adjacent keys
 - [ ] Arcade/rail shooter (typing of the dead)
+- [ ] User racing
 
 [phase-one]: ./docs/phases/phase1.md
 [phase-two]: ./docs/phases/phase2.md
