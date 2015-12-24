@@ -1,24 +1,41 @@
 var React = require('react');
+
+var ApiUtil = require('../../../util/ApiUtil');
+var ReportStore = require('../../../stores/ReportStore')
+
 var InputCursor = require('./InputCursor');
 
 var TypingInput = React.createClass({
   getInitialState: function () {
-    return { lastChar: '', inputBody: '', temp: '', mistyped: false, errors: [], focused: false };
+    return { sourceText: '', lastChar: '', inputBody: '', temp: '', mistyped: false, errors: [], focused: false };
   },
 
-  componentDidUpdate: function (prevProps) {
-    prevText = prevProps.sourceText || '';
-    newText = this.props.sourceText || '';
+  componentDidMount: function () {
+    this.sourceTextListener = ReportStore.addListener(this.updateSourceText);
+  },
+
+  componentWillUnmount: function () {
+    this.sourceTextListener.remove();
+  },
+
+  componentWillUpdate: function (newProps, newState) {
+    newText = newState.sourceText || '';
+    prevText = this.state.sourceText || '';
 
     if (Math.abs(newText.length - prevText.length) > 1) {
-      this.handleFocus();
+      var that = this;
+      setTimeout(function(){that.handleFocus();}, 100);
     }
   },
 
-  componentWillReceiveProps: function (newProps) {
-    if (newProps.sourceText !== this.props.sourceText) {
+  componentDidUpdate: function (prevProps, prevState) {
+    if (prevState.sourceText !== this.state.sourceText) {
       this.setState({ inputBody: '', temp: '' });
     }
+  },
+
+  updateSourceText: function () {
+    this.setState({ sourceText: ReportStore.sourceText() });
   },
 
   addError: function (index, sourceChar, inputChar) {
@@ -37,7 +54,7 @@ var TypingInput = React.createClass({
   },
 
   handleFocus: function () {
-    if (this.props.sourceText && this.props.sourceText.length > 0) {
+    if (this.state.sourceText && this.state.sourceText.length > 0) {
       this.refs.textInput.focus();
     }
   },
@@ -50,11 +67,11 @@ var TypingInput = React.createClass({
   handleInput: function (e) {
     var index = this.state.inputBody.length + this.state.temp.length;
 
-    if (index === this.props.sourceText.length) {
+    if (index === this.state.sourceText.length) {
       this.___donetyping();
     }
 
-    var sourceChar = this.props.sourceText[index];
+    var sourceChar = this.state.sourceText[index];
     var inputChar = e.currentTarget.value;
 
     var temp = this.state.temp + inputChar;
@@ -95,11 +112,11 @@ var TypingInput = React.createClass({
       currentStyle = {background: '#a80000'};
     }
 
+    var monitor = 'typing-input';
+    monitor += this.state.sourceText ? '' : ' standby';
+
     var dimmer = 'dimmer';
     dimmer += this.state.focused ? ' lights-out' : ' lights-on';
-
-    var monitor = 'typing-input';
-    monitor += this.props.sourceText ? '' : ' standby';
 
     return (
 <div className="input-pane">
@@ -113,12 +130,15 @@ var TypingInput = React.createClass({
           onBlur={this.blur}
         ></textarea>
 
-        <div className="source-body">{this.props.sourceText}</div>
+        <div className="source-body">{this.state.sourceText}</div>
 
         <div className="input-body" onClick={this.handleFocus}>
           {this.state.inputBody}
           <span style={currentStyle}>{this.state.temp}</span>
-          <InputCursor focused={this.state.focused} />
+
+          { this.state.focused ?
+            <InputCursor />
+          : null }
         </div>
       </div>
 <div className="errors">{errors}</div>

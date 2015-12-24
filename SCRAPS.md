@@ -1,5 +1,7 @@
 prototypist
 
+span/div for each line. reduce for index.
+
 [wombat colors](http://files.werx.dk/wombat.vim)
 
 ###inspo

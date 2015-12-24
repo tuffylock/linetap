@@ -3,10 +3,10 @@ var Dispatcher = require('../dispatcher/Dispatcher');
 var ReportConstants = require('../constants/ReportConstants');
 
 var ReportActions = {
-  updateBodyText: function (bodyText) {
+  updateSourceText: function (sourceText) {
     Dispatcher.dispatch({
-      actionType: ReportConstants.REPORT_BODY_TEXT_RECEIVED,
-      bodyText: bodyText
+      actionType: ReportConstants.SOURCE_TEXT_RECEIVED,
+      sourceText: sourceText
     });
   }
 };

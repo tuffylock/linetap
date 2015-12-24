@@ -9,12 +9,12 @@ var UploadForm = React.createClass({
 
   onChange: function (e) {
     this.setState({ pasteText: e.currentTarget.value });
-    ReportActions.updateBodyText(e.currentTarget.value);
+    ReportActions.updateSourceText(e.currentTarget.value);
   },
 
   prefill: function (e) {
     e.preventDefault();
-    ReportActions.updateBodyText("In fact, wrong notes always have a cause. An immediate physical cause. Just before you play a wrong note, your fingers were in a position that made that wrong note inevitable. Fixing wrong notes isn't about 'practicing harder' but about trying to unkink those systematically error-causing fingerings and hand motions.");
+    ReportActions.updateSourceText("In fact, wrong notes always have a cause. An immediate physical cause. Just before you play a wrong note, your fingers were in a position that made that wrong note inevitable. Fixing wrong notes isn't about 'practicing harder' but about trying to unkink those systematically error-causing fingerings and hand motions.");
   },
 
   render: function () {

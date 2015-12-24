@@ -6,21 +6,21 @@ var ReportConstants = require('../constants/ReportConstants');
 var ReportStore = new Store(Dispatcher);
 
 var _report = {
-  bodyText: ''
+  sourceText: ''
 };
 
-function setBodyText(newBodyText) {
-  _report.bodyText = newBodyText;
+function setSourceText(newSourceText) {
+  _report.sourceText = newSourceText;
 }
 
-ReportStore.bodyText = function () {
-  return _report.bodyText;
+ReportStore.sourceText = function () {
+  return _report.sourceText;
 };
 
 ReportStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
-  case ReportConstants.REPORT_BODY_TEXT_RECEIVED:
-    setBodyText(payload.bodyText);
+  case ReportConstants.SOURCE_TEXT_RECEIVED:
+    setSourceText(payload.sourceText);
     break;
   }
 
