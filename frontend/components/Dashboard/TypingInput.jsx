@@ -6,11 +6,10 @@ var TypingInput = React.createClass({
     return { lastChar: '', inputBody: '', temp: '', mistyped: false, errors: [], focused: false };
   },
 
-  // TODO: autofocus ONLY when pasted into or confirmed. allow edits.
-
   componentDidUpdate: function (prevProps) {
     prevText = prevProps.sourceText || '';
     newText = this.props.sourceText || '';
+
     if (Math.abs(newText.length - prevText.length) > 1) {
       this.handleFocus();
     }
@@ -99,10 +98,13 @@ var TypingInput = React.createClass({
     var dimmer = 'dimmer';
     dimmer += this.state.focused ? ' lights-out' : ' lights-on';
 
+    var monitor = 'typing-input';
+    monitor += this.props.sourceText ? '' : ' standby';
+
     return (
 <div className="input-pane">
       <div className={dimmer} />
-      <div className="typing-input">
+      <div className={monitor}>
         <textarea
           ref="textInput"
           value={this.state.lastChar}

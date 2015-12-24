@@ -105,7 +105,7 @@ body {
       top: 0;
 
         &:after {
-          box-shadow: 0px 0px 60px 5px #2D3C40;
+          box-shadow: 0px 0px 60px 5px #212a2d;
           content: '';
           position: absolute;
           z-index: -1;
@@ -117,30 +117,36 @@ body {
 
     .dimmer.lights-out {
       visibility: visible;
-      opacity: .85;
-      transition: opacity .9s linear;
+      opacity: 0.85;
+      transition: opacity 1s ease 0.5s;
     }
 
     .dimmer.lights-on {
       visibility: hidden;
       opacity: 0;
-      transition: visibility 0s .9s, opacity .9s linear;
+      transition: visibility 0s 0.5s, opacity 0.5s ease;
+    }
+
+    .typing-input.standby {
+      background-color: #212a2d;
+      transition: background-color 1s ease;
     }
 
     .typing-input {
-      box-shadow: inset 0px 0px 10px 10px #2D3C40;
+      box-shadow: inset 0px 0px 30px 10px #212a2d;
       border-radius: 60% / 1%;
       float: left;
       position: absolute;
-      background: $input-pane-color;
+      background-color: $input-pane-color;
+      transition: background-color 0.5s ease;
       font-family: 'Fira Mono';
       text-shadow: none;
       width: 60vw;
       height: 92vh;
       margin: 4vh 20vw;
 
-        &:after {
-          box-shadow: inset 0px 0px 30px 10px #2D3C40;
+        &:before {
+          box-shadow: inset 0px 0px 30px 5px #212a2d;
           content: '';
           position: absolute;
           top: .8vh;
@@ -156,24 +162,23 @@ body {
           max-width: 40em;
           background: transparent;
           position: absolute;
-          top: 1.5em;
-          bottom: 1.5em;
-          left: 1.5em;
-          right: 1.5em;
+          top: 1%;
+          bottom: 1%;
+          left: 1vw;
+          right: 1vw;
+          padding: 3.5vh 1.5vw;
           margin: 0 auto;
           white-space: pre-wrap;
+          word-wrap: break-word;
+          overflow: auto;
         }
 
         .source-body {
           color: $ghost-text-color;
-          z-index: 50;
-          word-wrap: break-word;
         }
 
         .input-body {
           color: $input-text-color;
-          z-index: 60;
-          word-wrap: break-word;
         }
 
         textarea {
