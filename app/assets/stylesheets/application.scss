@@ -33,22 +33,39 @@ body {
   width: 100vw;
   font-size: 18px;
   font-family: 'EB Garamond', serif;
-  text-shadow: 1.5px 1px 3px rgba(255,255,255,0.3);
+  text-shadow: 1px 1px 3px rgba(255,255,255,0.2);
   color: #373E44;
-  z-index: -3;
 }
 
-body:after {
-  content: "";
-  background-image: image-url('egg_shell.png');
-  background-repeat: repeat;
-  opacity: 0.2;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1;
+.dashboard {
+    &:before {
+      position: absolute;
+      content: '';
+      margin: .5vh 16vw;
+      height: 99vh;
+      width: 68vw;
+      border-style: solid;
+      border-width: 4.5vh 4.5vw;
+      border-top-color: #77726f;
+      border-left-color: #6d6a69;
+      border-right-color: #827d7a;
+      border-bottom-color: #938c88;
+      border-radius: 1% / 60%;
+      z-index: -2;
+    }
+
+    &:after {
+      content: '';
+      background-image: image-url('egg_shell.png');
+      background-repeat: repeat;
+      opacity: 0.2;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+      z-index: -1;
+    }
 }
 
 .nav-pane {
@@ -57,121 +74,134 @@ body:after {
   height: 100vh;
   padding: 1vh 1vw;
   background: transparent;
-}
 
-.doc-paste {
-  resize: none;
-  width: 14vw;
-  height: 6em;
-  background: #CAD0CE;
-}
-
-.dashboard {
-  position: relative;
+    .doc-paste {
+      resize: none;
+      width: 14vw;
+      height: 6em;
+      background: #CAD0CE;
+    }
 }
 
 .info-pane {
   float: right;
-  padding: 2em;
+  padding: 2vh 2vw;
   width: 16vw;
   height: 100vh;
   background: transparent;
   overflow: auto;
 }
 
-.input-pane:before {
-  position: fixed;
-  color: gray;
-  content: "";
-  margin: .5vh 0;
-  height: 99vh;
-  width: 68vw;
-  border-style: solid;
-  border-width: 4.5vh 4.5vw;
-  border-top-color: #77726f;
-  border-left-color: #6d6a69;
-  border-right-color: #827d7a;
-  border-bottom-color: #938c88;
-  border-radius: 1% / 60%;
-  z-index: -2;
-}
+.input-pane {
+  font-size: 16px;
+    .dimmer {
+      pointer-events: none;
+      background-color: black;
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      top: 0;
 
-.typing-input {
-  box-shadow: inset 0px 0px 10px 20px #293A3F;
-  border-radius: 60% / 1%;
-  float: left;
-  position: fixed;
-  background: $input-pane-color;
-  font-family: 'Fira Mono';
-  text-shadow: none;
-  width: 60vw;
-  height: 92vh;
-  margin: 4vh 20vw;
-}
+        &:after {
+          box-shadow: 0px 0px 60px 5px #2D3C40;
+          content: '';
+          position: absolute;
+          z-index: -1;
+          width: 60vw;
+          height: 90vh;
+          margin: 5vh 20vw;
+        }
+    }
 
-.typing-input:after {
-  box-shadow: inset 0px 0px 30px 10px #293A3F;
-  content: '';
-  position: absolute;
-  top: .8%;
-  bottom: .8%;
-  right: -.7%;
-  left: -.7%;
-  background: inherit;
-  border-radius: 1% / 60%;
-}
+    .dimmer.lights-out {
+      visibility: visible;
+      opacity: .85;
+      transition: opacity .9s linear;
+    }
 
-.typing-input div {
-  display: inline-block;
-  max-width: 40em;
-  background: transparent;
-  position: absolute;
-  top: 1.5em;
-  bottom: 1.5em;
-  left: 1.5em;
-  right: 1.5em;
-  margin: 0 auto;
-  white-space: pre-wrap;
-}
+    .dimmer.lights-on {
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0s .9s, opacity .9s linear;
+    }
 
-.typing-input .source-body {
-  color: $ghost-text-color;
-  z-index: 2;
-}
+    .typing-input {
+      box-shadow: inset 0px 0px 10px 10px #2D3C40;
+      border-radius: 60% / 1%;
+      float: left;
+      position: absolute;
+      background: $input-pane-color;
+      font-family: 'Fira Mono';
+      text-shadow: none;
+      width: 60vw;
+      height: 92vh;
+      margin: 4vh 20vw;
 
-.typing-input .input-body {
-  color: $input-text-color;
-  z-index: 3;
-  overflow: hidden;
-}
+        &:after {
+          box-shadow: inset 0px 0px 30px 10px #2D3C40;
+          content: '';
+          position: absolute;
+          top: .8vh;
+          bottom: .8vh;
+          right: -.4vw;
+          left: -.4vw;
+          background: inherit;
+          border-radius: 1% / 60%;
+        }
 
-.typing-input textarea {
-  position: fixed;
-  left: -100%;
-}
+        div {
+          display: inline-block;
+          max-width: 40em;
+          background: transparent;
+          position: absolute;
+          top: 1.5em;
+          bottom: 1.5em;
+          left: 1.5em;
+          right: 1.5em;
+          margin: 0 auto;
+          white-space: pre-wrap;
+        }
 
-.input-cursor.unfocused {
-  background: transparent;
-}
+        .source-body {
+          color: $ghost-text-color;
+          z-index: 50;
+          word-wrap: break-word;
+        }
 
-.input-cursor.focused {
-  display: inline-block;
-  width: 2px;
-  background: $ghost-text-color;
-  animation: cursor-flash 1s infinite;
-}
+        .input-body {
+          color: $input-text-color;
+          z-index: 60;
+          word-wrap: break-word;
+        }
 
-@keyframes cursor-flash {
-  0%, 50% {
-    opacity: 1;
-  }
-  51%, 100% {
-    opacity: 0;
-  }
-}
+        textarea {
+          position: fixed;
+          left: -100%;
+        }
+    }
 
-.errors {
-  float: right;
+
+    .input-cursor.unfocused {
+      background: transparent;
+    }
+
+    .input-cursor.focused {
+      display: inline-block;
+      width: 2px;
+      background: $ghost-text-color;
+      animation: cursor-flash 1s infinite;
+
+        @keyframes cursor-flash {
+          0%, 50% {
+            opacity: 1;
+          }
+          51%, 100% {
+            opacity: 0;
+          }
+        }
+    }
 }
 
 @media screen and (max-width: 400px) {

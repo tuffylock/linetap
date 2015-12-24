@@ -1,6 +1,6 @@
 var React = require('react');
 
-var ReportActions = require('../../actions/ReportActions');
+var ReportActions = require('../../../actions/ReportActions');
 
 var UploadForm = React.createClass({
   getInitialState: function () {

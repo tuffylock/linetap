@@ -5,6 +5,7 @@ var DocumentStore = require('../../stores/DocumentStore');
 var ReportStore = require('../../stores/ReportStore');
 
 var InfoPane = require('./InfoPane');
+var NavBarContainer = require('./NavBar/NavBarContainer');
 var TypingInput = require('./TypingInput');
 
 
@@ -41,7 +42,8 @@ var Dashboard = React.createClass({
     var upload = this.state.reportBodyText;
 
     return (
-      <div id="dashboard">
+      <div className="dashboard">
+        <NavBarContainer />
         <TypingInput sourceText={upload} />
         <InfoPane />
       </div>

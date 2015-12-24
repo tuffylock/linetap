@@ -8,15 +8,13 @@ var TypingInput = React.createClass({
 
   // TODO: autofocus ONLY when pasted into or confirmed. allow edits.
 
-  // componentDidUpdate: function (prevProps) {
-  //   // if (this.props.sourceText !== prevProps.sourceText) {
-  //   //   this.handleFocus();
-  //   // }
-
-  //   this.setState({ inputBody: '' })
-  // },
-
-  // TODO: clear input text when fresh source arrives
+  componentDidUpdate: function (prevProps) {
+    prevText = prevProps.sourceText || '';
+    newText = this.props.sourceText || '';
+    if (Math.abs(newText.length - prevText.length) > 1) {
+      this.handleFocus();
+    }
+  },
 
   componentWillReceiveProps: function (newProps) {
     if (newProps.sourceText !== this.props.sourceText) {
@@ -98,8 +96,12 @@ var TypingInput = React.createClass({
       currentStyle = {background: '#a80000'};
     }
 
+    var dimmer = 'dimmer';
+    dimmer += this.state.focused ? ' lights-out' : ' lights-on';
+
     return (
 <div className="input-pane">
+      <div className={dimmer} />
       <div className="typing-input">
         <textarea
           ref="textInput"
@@ -114,7 +116,7 @@ var TypingInput = React.createClass({
         <div className="input-body" onClick={this.handleFocus}>
           {this.state.inputBody}
           <span style={currentStyle}>{this.state.temp}</span>
-          <InputCursor focused={this.state.focused}/>
+          <InputCursor focused={this.state.focused} />
         </div>
       </div>
 <div className="errors">{errors}</div>
