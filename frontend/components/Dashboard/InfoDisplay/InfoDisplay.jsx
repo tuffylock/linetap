@@ -1,6 +1,6 @@
 var React = require('react');
 
-var InfoPane = React.createClass({
+var InfoDisplay = React.createClass({
   render: function () {
     return (
       <div className="info-pane">
@@ -10,4 +10,4 @@ var InfoPane = React.createClass({
   }
 });
 
-module.exports = InfoPane;
+module.exports = InfoDisplay;

@@ -92,8 +92,8 @@ body {
   width: 16vw;
 }
 
-.input-pane {
-    .dimmer {
+.typing-console {
+    .focus-dimmer {
       background-color: #000000;
       bottom: 0;
       content: "";
@@ -114,7 +114,7 @@ body {
         }
     }
 
-    .dimmer.lights {
+    .focus-dimmer.lights {
       &-out {
         opacity: .85;
         transition: opacity 1s ease .5s;
@@ -122,18 +122,19 @@ body {
       }
 
       &-on {
-        opacity: 0;
-        transition: visibility 0s .6s, opacity .5s .1s ease-in;
-        visibility: hidden;
+        opacity: .4;
+        transform: scale(.1);
+        visibility: visible;
+        transition: opacity .5s .1s ease-in, transform 3s .6s, visibility 0s .6s;
       }
     }
 
-    .typing-input.standby {
+    .monitor-screen.standby {
       background-color: #212a2d;
       transition: background-color .8s ease;
     }
 
-    .typing-input {
+    .monitor-screen {
       background-color: $input-pane-color;
       border-radius: 60% / 1%;
       box-shadow: inset 0 0 30px 10px #212a2d;
@@ -173,7 +174,7 @@ body {
           word-wrap: break-word;
         }
 
-        .source-body {
+        .source-body, .input-display {
           color: $ghost-text-color;
         }
 
@@ -181,7 +182,7 @@ body {
           color: $input-text-color;
         }
 
-        textarea {
+        .input-proxy {
           left: -100%;
           position: fixed;
         }
@@ -190,7 +191,7 @@ body {
     .input-cursor {
       animation: cursor-flash 1s infinite;
       background-color: $ghost-text-color;
-      display: inline-block;
+      position: absolute;
       width: 2px;
 
         @keyframes cursor-flash {
@@ -208,4 +209,41 @@ body {
   .nav-bar {
     background: black;
   }
+}
+
+.input-logged {
+  color: #64B77B;
+}
+
+.input-temp {
+  color: $input-text-color;
+  position: absolute;
+  white-space: pre;
+  left: 0;
+  top: 0;
+
+  &.typo {
+    background-color: #a80000;
+    animation: warning-flash .7s 1;
+
+      @keyframes warning-flash {
+        0%, 29% {
+          opacity: 1;
+        }
+        30%, 59% {
+          opacity: 0;
+        }
+        60%, 89% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 0;
+        }
+      }
+  }
+}
+
+.remaining-source-text {
+  position: relative;
+  color: $ghost-text-color;
 }

@@ -3,9 +3,9 @@ var React = require('react');
 var ApiUtil = require('../../util/ApiUtil');
 var DocumentStore = require('../../stores/DocumentStore');
 
-var InfoPane = require('./InfoDisplay/InfoPane');
-var NavBarContainer = require('./NavBar/NavBarContainer');
-var TypingInput = require('./TypingInput/TypingInput');
+var InfoDisplay = require('./InfoDisplay/InfoDisplay');
+var NavBar = require('./NavBar/NavBar');
+var TypingConsole = require('./TypingConsole/TypingConsole');
 
 
 var Dashboard = React.createClass({
@@ -32,14 +32,14 @@ var Dashboard = React.createClass({
     if (this.state.documents[0]) {
       body = this.state.documents[0].body;
     } else {
-      body = "";
+      body = '';
     };
 
     return (
       <div className="dashboard">
-        <NavBarContainer />
-        <TypingInput />
-        <InfoPane />
+        <NavBar />
+        <TypingConsole />
+        <InfoDisplay />
       </div>
     );
   }

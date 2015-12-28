@@ -7,7 +7,7 @@ var InputCursor = require('./InputCursor');
 
 var TypingInput = React.createClass({
   getInitialState: function () {
-    return { sourceText: '', lastChar: '', inputBody: '', temp: '', mistyped: false, errors: [], focused: false };
+    return { sourceText: '', lastChar: '', inputBody: '', temp: '', mistyped: false, errors: [] };
   },
 
   componentDidMount: function () {
@@ -24,7 +24,7 @@ var TypingInput = React.createClass({
 
     if (Math.abs(newText.length - prevText.length) > 1) {
       var that = this;
-      setTimeout(function(){that.handleFocus();}, 100);
+      setTimeout(function(){that.handleFocus();}, 10);
     }
   },
 
@@ -115,9 +115,6 @@ var TypingInput = React.createClass({
     var monitor = 'typing-input';
     monitor += this.state.sourceText ? '' : ' standby';
 
-    var dimmer = 'dimmer';
-    dimmer += this.state.focused ? ' lights-out' : ' lights-on';
-
     return (
 <div className="input-pane">
       <div className={dimmer} />
@@ -136,9 +133,7 @@ var TypingInput = React.createClass({
           {this.state.inputBody}
           <span style={currentStyle}>{this.state.temp}</span>
 
-          { this.state.focused ?
-            <InputCursor />
-          : null }
+          { this.state.focused && <InputCursor /> }
         </div>
       </div>
 <div className="errors">{errors}</div>
