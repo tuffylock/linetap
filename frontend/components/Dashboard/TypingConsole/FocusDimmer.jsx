@@ -4,7 +4,7 @@ var FocusDimmer = React.createClass({
   render: function () {
     var focusDimmer = 'focus-dimmer';
 
-    focusDimmer += this.props.focused ? ' lights-out' : ' lights-on';
+    focusDimmer += this.props.dimmed ? ' lights-out' : ' lights-on';
 
     return (
       <div className={focusDimmer} />

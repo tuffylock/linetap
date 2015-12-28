@@ -1,11 +1,35 @@
 var React = require('react');
 
+var ApiUtil = require('../../../util/ApiUtil');
+var ReportStore = require('../../../stores/ReportStore');
+
 var FocusDimmer = require('./FocusDimmer');
 var InputDisplay = require('./InputDisplay');
+var ResultsDisplay = require('./ResultsDisplay');
 
 var TypingConsole = React.createClass({
   getInitialState: function () {
-    return { focused: false };
+    return { focused: false, complete: false, sourceText: '' };
+  },
+
+  componentDidMount: function () {
+    this.sourceTextListener =
+      ReportStore.addListener(this.updateSourceText);
+  },
+
+  componentWillUnmount: function () {
+    this.sourceTextListener.remove();
+  },
+
+  updateSourceText: function () {
+    this.setState({ sourceText: ReportStore.sourceText() });
+  },
+
+  registerCompletion: function () {
+    typingConsole = this;
+    setTimeout(function () {
+      typingConsole.setState({ complete: true });
+    }, 1500);
   },
 
   toggleFocus: function () {
@@ -15,9 +39,17 @@ var TypingConsole = React.createClass({
   render: function () {
     return (
       <div className="typing-console">
-        <FocusDimmer focused={this.state.focused} />
+        <FocusDimmer dimmed={this.state.focused} />
+
         <div className="monitor-screen">
-          <InputDisplay toggleFocus={this.toggleFocus} />
+          { !this.state.complete && <InputDisplay
+            sourceText={this.state.sourceText}
+            focused={this.state.focused}
+            toggleFocus={this.toggleFocus}
+            registerCompletion={this.registerCompletion}
+          /> }
+
+          { this.state.complete && <ResultsDisplay /> }
         </div>
       </div>
     );

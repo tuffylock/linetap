@@ -122,10 +122,10 @@ body {
       }
 
       &-on {
-        opacity: .4;
+        opacity: 0;
         transform: scale(.1);
         visibility: visible;
-        transition: opacity .5s .1s ease-in, transform 3s .6s, visibility 0s .6s;
+        transition: opacity .5s .1s ease-in, transform 0s .6s, visibility 0s .6s;
       }
     }
 
@@ -188,7 +188,7 @@ body {
         }
     }
 
-    .input-cursor {
+    .input-cursor.active {
       animation: cursor-flash 1s infinite;
       background-color: $ghost-text-color;
       position: absolute;
@@ -211,7 +211,7 @@ body {
   }
 }
 
-.input-logged {
+.logged-input {
   color: #64B77B;
 }
 
@@ -246,4 +246,8 @@ body {
 .remaining-source-text {
   position: relative;
   color: $ghost-text-color;
+}
+
+.results-display {
+  color: #64B77B;
 }
