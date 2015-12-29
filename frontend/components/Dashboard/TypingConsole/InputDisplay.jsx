@@ -139,7 +139,9 @@ var InputDisplay = React.createClass({
   },
 
   redirectFocus: function () {
-    this.refs.inputProxy.focus();
+    if (this.state.remainingSourceText) {
+      this.refs.inputProxy.focus();
+    }
   },
 
   render: function () {

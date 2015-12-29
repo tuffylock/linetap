@@ -75,6 +75,7 @@ body {
   height: 100vh;
   padding: 1vh 1vw;
   width: 16vw;
+  overflow: auto;
 
     .doc-paste {
       background-color: #CAD0CE;
@@ -140,6 +141,7 @@ body {
       box-shadow: inset 0 0 30px 10px #212a2d;
       float: left;
       font-family: "Fira Mono";
+      font-variant: none;
       height: 92vh;
       margin: 4vh 20vw;
       position: absolute;
