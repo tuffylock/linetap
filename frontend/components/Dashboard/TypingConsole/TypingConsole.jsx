@@ -22,13 +22,15 @@ var TypingConsole = React.createClass({
   },
 
   updateSourceText: function () {
-    this.setState({ sourceText: ReportStore.sourceText() });
+    this.setState({ complete: false }, function () {
+      this.setState({ sourceText: ReportStore.sourceText() });
+    });
   },
 
   registerCompletion: function () {
     typingConsole = this;
     setTimeout(function () {
-      typingConsole.setState({ complete: true });
+      typingConsole.setState({ complete: true, focused: false });
     }, 1500);
   },
 
@@ -49,7 +51,7 @@ var TypingConsole = React.createClass({
             registerCompletion={this.registerCompletion}
           /> }
 
-          { this.state.complete && <ResultsDisplay /> }
+          { this.state.complete && <ResultsDisplay sourceText={this.state.sourceText} toggleFocus={this.toggleFocus} /> }
         </div>
       </div>
     );

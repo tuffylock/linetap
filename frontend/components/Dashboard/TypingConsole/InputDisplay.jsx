@@ -15,12 +15,17 @@ var InputDisplay = React.createClass({
   },
 
   componentDidUpdate: function (prevProps) {
-    prevText = prevProps.sourceText || '';
-    newText = this.props.sourceText || '';
+    var prevText = prevProps.sourceText || '';
+    var newText = this.props.sourceText || '';
 
-    if (Math.abs(newText.length - prevText.length) > 1) {
+    var freshSource = (newText.length > 1);
+    var manualEdit = (Math.abs(newText.length - prevText.length) <= 1);
+
+
+    if (freshSource && !manualEdit) {
       this.redirectFocus();
     }
+
     this.scrollWithInput();
   },
 
@@ -62,15 +67,28 @@ var InputDisplay = React.createClass({
 
   checkForBreakOrCompletion: function () {
     if (!this.state.typo) {
+      var sourceText = this.state.remainingSourceText
       var inputTemp = this.state.inputTemp;
       var index = inputTemp.length;
-      var nextChar = this.state.remainingSourceText[index]
+      var nextChar = sourceText[index]
 
-      if (BreakChars.test(inputTemp) || BreakChars.test(nextChar)) {
+      var breakHere = BreakChars.test(this.state.inputTemp);
+      var breakNext = BreakChars.test(nextChar);
+
+
+      var input = this.refs.inputTemp;
+      var sourceBody = this.refs.sourceBody;
+      var inputPosition = input.getBoundingClientRect().right;
+      var sourcePosition = sourceBody.getBoundingClientRect().right;
+
+      var forcedNewLine = (inputPosition > sourcePosition);
+
+
+      if (breakHere || breakNext || forcedNewLine) {
         this.logInput();
       }
 
-      if (index === this.state.remainingSourceText.length) {
+      if (index === sourceText.length) {
         this.logInput();
         this.wrapUp();
       }
@@ -139,8 +157,8 @@ var InputDisplay = React.createClass({
       >
         <textarea
           className="input-proxy"
-          value=""
           ref="inputProxy"
+          value=""
           onChange={this.handleInput}
           onFocus={this.props.toggleFocus}
           onBlur={this.props.toggleFocus}
@@ -148,7 +166,7 @@ var InputDisplay = React.createClass({
 
         <span className="logged-input">{this.state.loggedInput}</span>
 
-        <span className="remaining-source-text">
+        <span className="remaining-source-text" ref="sourceBody">
           {this.state.remainingSourceText}
 
           <span className={inputTempClass} ref="inputTemp">
