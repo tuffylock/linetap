@@ -2,9 +2,8 @@
 
 classical reconditioning
 
-[live][heroku]
+[live](http://www.proto-typist.xyz)
 
-[heroku]: https://proto-typist.herokuapp.com/
 
 ## MVP
 
