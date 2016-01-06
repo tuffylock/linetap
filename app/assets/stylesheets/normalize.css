@@ -1,3 +1,15 @@
+a img, :link img, :visited img {border: 0;}
+
+ul, ol {list-style: none;}
+
+table {border-collapse: collapse; border-spacing: 0;}
+
+body, div, dl, dt, dd, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, table, th, td, embed, object {padding:0; margin: 0;}
+
+:focus {outline: 0;}
+
+:link,:visited { text-decoration:none }
+
 /*another reset option*/
 
 /* http://meyerweb.com/eric/tools/css/reset/

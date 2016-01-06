@@ -6,7 +6,7 @@ var InputCursor = React.createClass({
     inputCursor += this.props.active ? ' active' : '';
 
     return (
-      <i className={inputCursor}>&nbsp;</i>
+      <span className={inputCursor}>&nbsp;</span>
     );
   }
 });

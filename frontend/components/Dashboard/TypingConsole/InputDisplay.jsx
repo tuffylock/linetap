@@ -1,5 +1,7 @@
 var React = require('react');
 
+var ExerciseActions = require('../../../actions/ExerciseActions');
+
 var InputCursor = require('./InputCursor');
 
 var BreakChars = new RegExp(/[\s]/);
@@ -7,7 +9,7 @@ var BreakChars = new RegExp(/[\s]/);
 var InputDisplay = React.createClass({
   getInitialState: function () {
     return {
-      typo: false,
+      mistyped: false,
       loggedInput: '',
       inputTemp: '',
       remainingSourceText: ''
@@ -40,33 +42,47 @@ var InputDisplay = React.createClass({
   },
 
   handleInput: function (e) {
-    var inputChar = e.currentTarget.value;
+    if (!this.state.loggedInput && !this.state.inputTemp) {
+      this.startTime = Date.now();
+    }
+
     var inputTemp = this.state.inputTemp;
-    var index = inputTemp.length;
-    var sourceChar = this.state.remainingSourceText[index];
 
-    this.checkForTypo(inputChar, sourceChar);
+    this.index = inputTemp.length;
+    this.inputChar = e.currentTarget.value;
+    this.sourceChar = this.state.remainingSourceText[this.index];
 
-    var updatedTemp = inputTemp + inputChar;
+    this.checkForTypo();
+
+    var updatedTemp = inputTemp + this.inputChar;
     this.setState(
       { inputTemp: updatedTemp },
       this.checkForBreakOrCompletion
     );
   },
 
-  checkForTypo: function (inputChar, sourceChar) {
-    if (inputChar !== sourceChar) {
-      this.setState({ typo: true });
+  checkForTypo: function () {
+    if (this.inputChar !== this.sourceChar) {
+      var typo = {
+        textIndex: (this.state.loggedInput.length + this.index),
+        targetChar: this.sourceChar,
+        typedChar: this.inputChar,
+        timestamp: (Date.now() - this.startTime)
+      };
+
+      ExerciseActions.logTypo(typo);
+
+      this.setState({ mistyped: true });
 
       var inputDisplay = this;
       setTimeout(function () {
-        inputDisplay.setState({ typo: false, inputTemp: '' });
+        inputDisplay.setState({ mistyped: false, inputTemp: '' });
       }, 600);
     }
   },
 
   checkForBreakOrCompletion: function () {
-    if (!this.state.typo) {
+    if (!this.state.mistyped) {
       var sourceText = this.state.remainingSourceText
       var inputTemp = this.state.inputTemp;
       var index = inputTemp.length;
@@ -96,15 +112,20 @@ var InputDisplay = React.createClass({
   },
 
   wrapUp: function () {
-    this.props.registerCompletion();
-
     var inputDisplay = this;
+    var timeTaken = Date.now() - this.startTime
+
+    setTimeout(function () {
+      inputDisplay.props.registerCompletion(timeTaken);
+    }, 1500);
+
     for (var i = 4; i >= 0; i--) {
       setTimeout(function () {
         var displayWrapUp = inputDisplay.state.loggedInput + ' .';
         inputDisplay.setState({ loggedInput: displayWrapUp });
       }, (i * 100));
     }
+
     for (var i = 40; i >= 0; i--) {
       setTimeout(function () {
         var displayClear = inputDisplay.state.loggedInput + "\n";
@@ -126,14 +147,13 @@ var InputDisplay = React.createClass({
 
   scrollWithInput: function () {
     var display = this.refs.inputDisplay;
-    var input = this.refs.inputTemp;
+    var input = this.refs.inputTemp.getBoundingClientRect();
 
-    var inputPosition = input.getBoundingClientRect().top;
     var midDisplay = display.clientHeight / 2;
 
-    this.lineHeight = this.lineHeight || input.clientHeight
+    this.lineHeight = this.lineHeight || input.height
 
-    if (inputPosition > midDisplay) {
+    if (input.top > midDisplay) {
       display.scrollTop += this.lineHeight;
     }
   },
@@ -145,8 +165,22 @@ var InputDisplay = React.createClass({
   },
 
   render: function () {
-    var inputTempClass = 'input-temp'
-    inputTempClass += this.state.typo ? ' typo' : '';
+    var staged = this.state.loggedInput + this.state.inputTemp + this.state. remainingSourceText;
+    var instructions = (        <div className="instructions">
+          <ul>
+          <li>Upload practice material via the left sidebar.</li>
+
+          <li>Try entering text full of words you often mistype - your thesis, your business's address, that facebook comment - or use the 'demo text' option.</li>
+
+          <li>You'll be typing in the center screen. When you make a typo, the text will flash red and take you back to the start of that word. Progress by typing the word correctly - in one go, from start to finish, no typos.</li>
+
+          <li>Once you finish, the words per minute, accuracy, and a summary of any typos is displayed.</li>
+          </ul>
+        </div>)
+
+
+    var inputTempClass = 'input-temp';
+    inputTempClass += this.state.mistyped ? ' typo' : '';
 
     var cursorActive =
       this.props.focused && this.state.remainingSourceText;
@@ -176,6 +210,9 @@ var InputDisplay = React.createClass({
             <InputCursor active={cursorActive} />
           </span>
         </span>
+
+
+        {!staged && instructions}
       </div>
     );
   }

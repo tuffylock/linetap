@@ -1,0 +1,43 @@
+/**************
+ * background *
+ **************/
+
+body {
+  background: linear-gradient(-45deg, #9E938B, #7B7672, #9E9793);
+}
+
+.texture {
+    /* texture overlay */
+
+      content: "";
+      position: fixed;
+      top: -1vh;
+      right: 0;
+      bottom: -1vh;
+      left: 0;
+      background-image: image-url("egg_shell.png");
+      opacity: .2;
+      z-index: -10;
+      box-shadow: inset 0 0 5vw .5vw black;
+}
+
+
+/* framing/inset for monitor display */
+
+.typing-console-inset {
+  content: "";
+  position: absolute;
+  top: 1vh;
+  right: 19vw;
+  bottom: 3vh;
+  left: 19vw;
+  border-style: solid;
+  border-radius: 1% / 60%;
+  border-width: 6vh 6vw;
+  border-top-color: #77726f;
+  border-right-color: #827d7a;
+  border-bottom-color: #938c88;
+  border-left-color: #6d6a69;
+  z-index: -20;
+}
+

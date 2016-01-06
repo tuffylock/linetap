@@ -1,7 +1,7 @@
 var React = require('react');
 
 var ApiUtil = require('../../../util/ApiUtil');
-var ReportStore = require('../../../stores/ReportStore');
+var ExerciseStore = require('../../../stores/ExerciseStore');
 
 var FocusDimmer = require('./FocusDimmer');
 var InputDisplay = require('./InputDisplay');
@@ -14,7 +14,7 @@ var TypingConsole = React.createClass({
 
   componentDidMount: function () {
     this.sourceTextListener =
-      ReportStore.addListener(this.updateSourceText);
+      ExerciseStore.addListener(this.updateSourceText);
   },
 
   componentWillUnmount: function () {
@@ -23,15 +23,13 @@ var TypingConsole = React.createClass({
 
   updateSourceText: function () {
     this.setState({ complete: false }, function () {
-      this.setState({ sourceText: ReportStore.sourceText() });
+      this.setState({ sourceText: ExerciseStore.sourceText() });
     });
   },
 
-  registerCompletion: function () {
-    typingConsole = this;
-    setTimeout(function () {
-      typingConsole.setState({ complete: true, focused: false });
-    }, 1500);
+  registerCompletion: function (timeTaken) {
+    this.timeTaken = timeTaken;
+    this.setState({ complete: true, focused: false });
   },
 
   toggleFocus: function () {
@@ -39,8 +37,11 @@ var TypingConsole = React.createClass({
   },
 
   render: function () {
+    var typos = ExerciseStore.typos();
+
     return (
       <div className="typing-console">
+        <div className="typing-console-inset" />
         <FocusDimmer dimmed={this.state.focused} />
 
         <div className="monitor-screen">
@@ -51,7 +52,12 @@ var TypingConsole = React.createClass({
             registerCompletion={this.registerCompletion}
           /> }
 
-          { this.state.complete && <ResultsDisplay sourceText={this.state.sourceText} toggleFocus={this.toggleFocus} /> }
+          { this.state.complete && <ResultsDisplay
+            sourceText={this.state.sourceText}
+            timeTaken={this.timeTaken}
+            typos={typos}
+            toggleFocus={this.toggleFocus}
+          /> }
         </div>
       </div>
     );

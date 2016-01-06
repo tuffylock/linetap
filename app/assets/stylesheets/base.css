@@ -1,0 +1,61 @@
+@import url(https://fonts.googleapis.com/css?family=Corben:700|Vollkorn:400,400italic|Fira+Mono);
+
+/* zero out box model spacing */
+*{margin: 0; padding: 0;}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+
+/* include padding and borders in measurments */
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+
+/* hidden element that retains accessibility */
+
+.hidden {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+
+/* prevent ios text zoom on orientation change, retain user zoom */
+
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* remove inner padding and border in Firefox 4+ */
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/* fix Firefox 4+ setting `line-height` on `input` using `!important` in the UA stylesheet */
+
+input {
+  line-height: normal;
+}
+
+/* remove default vertical scrollbar in IE 8/9/10/11 */
+
+textarea {
+  overflow: auto;
+}

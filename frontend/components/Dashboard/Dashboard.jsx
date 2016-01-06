@@ -37,6 +37,8 @@ var Dashboard = React.createClass({
 
     return (
       <div className="dashboard">
+        <div className="texture" />
+
         <NavBar />
         <TypingConsole />
         <InfoDisplay />

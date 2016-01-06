@@ -1,0 +1,4 @@
+module.exports = {
+  SOURCE_TEXT_RECEIVED: "SOURCE_TEXT_RECEIVED",
+  LOG_TYPO: "LOG_TYPO"
+};
