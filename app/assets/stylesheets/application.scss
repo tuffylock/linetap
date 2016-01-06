@@ -81,11 +81,12 @@ body {
   }
 
   .demo-text-button:active {
-    box-shadow:0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset;
-    top:5px;
+    box-shadow:0 1px 0 rgba(200, 200, 200, .4) inset, 0 -1px 0 rgba(200, 200, 200, .1) inset;
+    top:1px;
   }
+
   .demo-text-button:active:before{
-    top: -11px;
+    top: -3px;
     bottom: -5px;
     content: "";
   }
